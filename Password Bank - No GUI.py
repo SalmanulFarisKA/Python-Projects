@@ -21,6 +21,7 @@ conn = mysql.connector.connect(
 # Creating cursor
 c = conn.cursor()
 
+
 def genPass():
 
     letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -39,6 +40,7 @@ def genPass():
         passw += passw_sym
 
     return passw
+
 
 while 1:
     master_pass = input("Enter master password: ")
@@ -89,9 +91,9 @@ if savePass == True:
             if record[0] == sAccName:
                 sUserFound = True
                 break
-            else:
-                break
-    
+            
+        break
+
 if sUserFound:
 
     while True:
@@ -113,7 +115,8 @@ if sUserFound:
             replacedPass = genPass()
 
             # Query the database
-            c.execute('UPDATE sPasswords SET Password = "{}" WHERE Account = "{}"'.format(replacedPass, sAccName))
+            c.execute('UPDATE sPasswords SET Password = "{}" WHERE Account = "{}"'.format(
+                replacedPass, sAccName))
 
             print("The new password is {}".format(replacedPass))
 
@@ -132,7 +135,7 @@ if not sUserFound:
     print("The saved password is {}".format(savedPass))
 
 if retrievePass:
-    
+
     while True:
 
         print("1. Retrieve a single password")
@@ -175,13 +178,10 @@ if RetrieveSinglePass == True:
             break
         else:
             print("That account doesn't exist in database. Please try again.")
-        
+
     if rUserFound:
         print("The password for {} is {}".format(rAccName, retrievedPass))
 
-
-        
-    
 
 conn.commit()
 
