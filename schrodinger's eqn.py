@@ -1,3 +1,5 @@
+# Work in progress
+
 # Aim: To make a program that solves schrodinger's eqn for a given potential and initial conditions and plots it in matplotlib
 
 import matplotlib.pyplot as plt
