@@ -3,7 +3,7 @@ from colour import Color
 
 # %%manim -qm -v WARNING LaggingGroup
 
-# config.background_color = WHITE
+config.background_color = BLACK
 
 config.frame_width = 16
 config.frame_height = 9
