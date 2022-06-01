@@ -67,8 +67,7 @@ class Trig(Scene):
 
     ## side A
 
-    XA = Tex(r"$\times$").scale(sc2)
-
+    XA =  Tex(r"$\times$").scale(sc2)
     XA.add_updater(
         lambda mob: mob.next_to(sideA).next_to(sideA, RIGHT*(adj3))
     )
@@ -79,9 +78,13 @@ class Trig(Scene):
         num_decimal_places = 1,
         show_ellipsis = False
     ).scale(sc2)
-
     aA.add_updater(
         lambda mob: mob.set_value(a.get_value()).next_to(XA, RIGHT*(adj3))
+    )
+
+    aText_a = Tex(r"a").scale(sc2)
+    aText_a.add_updater(
+        lambda mob: mob.next_to(XA, RIGHT*(adj3))
     )
 
     ## side B
@@ -103,10 +106,14 @@ class Trig(Scene):
         lambda mob: mob.set_value(a.get_value()).next_to(XB, RIGHT*(adj3))
     )
 
+    aText_b = Tex(r"a").scale(sc2)
+    aText_b.add_updater(
+        lambda mob: mob.next_to(XB, RIGHT*(adj3))
+    )
+
     ## side C
 
     XC = Tex(r"$\times$").scale(sc2)
-
     XC.add_updater(
         lambda mob: mob.next_to(sideC).next_to(sideC, RIGHT*(adj3))
     )
@@ -117,18 +124,22 @@ class Trig(Scene):
         num_decimal_places = 1,
         show_ellipsis = False
     ).scale(sc2)
-
     aC.add_updater(
         lambda mob: mob.set_value(a.get_value()).next_to(XC, RIGHT*(adj3))
     )
 
-    # triangle updater
+    aText_c = Tex(r"a").scale(sc2)
+    aText_c.add_updater(
+        lambda mob: mob.next_to(XC, RIGHT*(adj3))
+    )
 
-    # triangle = VGroup(t, righta)
+    # triangle updater
 
     t.add_updater(
         lambda mob: mob.become(Polygon(RIGHT + DOWN, RIGHT + UP, LEFT*2 + DOWN).scale(a.get_value()))
     )
+
+    wholeTriangle = VGroup(t, A, B, C, sideA, sideB, sideC, aA, aB, aC, XA, XB, XC, righta)
 
     # animation
 
@@ -139,10 +150,45 @@ class Trig(Scene):
     self.play(sideA.animate.shift(0.5*LEFT+0.2*UP), sideB.animate.shift(0.2*LEFT))
     self.play(Write(XA), Write(aA), Write(XB), Write(aB), Write(XC), Write(aC))
     self.play(a.animate.set_value(1.5), righta.animate.shift(((1.5)*RIGHT+DOWN)*(0.5)))
-    self.wait(0.5)
+    self.wait()
     self.play(a.animate.set_value(3), righta.animate.shift(((1.5)*RIGHT+DOWN)*(1.5)))
-    self.wait(0.5)
+    self.wait()
     self.play(a.animate.set_value(0.7), righta.animate.shift(((1.5)*RIGHT+DOWN)*(-2.3)))
-    self.wait(0.5)
+    self.wait()
     self.play(a.animate.set_value(1), righta.animate.shift(((1.5)*RIGHT+DOWN)*(0.3)))
+    self.wait()
+
+    # reset all the updaters on a number and transform them to a
+
+    self.play(sideA.animate.shift(0.3*RIGHT))
+
+    for i in [aA, aB, aC]:
+      i.clear_updaters()
+
+    self.play(Transform(aA, aText_a), Transform(aB, aText_b), Transform(aC, aText_c))
+    self.wait()
+
+    for i in [t, A, B, C, sideA, sideB, sideC, aA, aB, aC, XA, XB, XC, righta]:
+      i.clear_updaters()
+
+    self.play(wholeTriangle.animate.shift(LEFT*2))
+    self.wait()
+
+    AB = Line(DOWN+LEFT, UP+LEFT, color = YELLOW)
+    BC = Line(4*LEFT+DOWN, UP+LEFT, color = YELLOW)
+    AC = Line(DOWN+LEFT, 4*LEFT+DOWN, color = YELLOW)
+    
+    self.play(FadeIn(AB))
+    self.play(FadeOut(AB))
+
+    self.wait()
+
+    self.play(FadeIn(BC))
+    self.play(FadeOut(BC))
+    
+    self.wait()
+
+    self.play(FadeIn(AC))
+    self.play(FadeOut(AC))
+
     self.wait()
