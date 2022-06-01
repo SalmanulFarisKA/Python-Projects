@@ -3,13 +3,22 @@ from colour import Color
 
 # %%manim -qm -v WARNING Trig
 
+%%manim -qm -v WARNING Trig
+
+config.frame_width = 16
+config.frame_height = 9
+
+config.pixel_width = 1920
+config.pixel_height = 1080
+
 class Trig(Scene):
   def construct(self):
 
-    adj = 0.3
+    d = 2 # default waiting time
+    adj = 0.3 # adjustment
     adj2 = 0.7
     adj3 = 0.3
-    sc = 0.9
+    sc = 0.9 # scale
     sc2 = 0.7
 
     # triangle
@@ -166,13 +175,13 @@ class Trig(Scene):
       i.clear_updaters()
 
     self.play(Transform(aA, aText_a), Transform(aB, aText_b), Transform(aC, aText_c))
-    self.wait()
+    self.wait(d)
 
     for i in [t, A, B, C, sideA, sideB, sideC, aA, aB, aC, XA, XB, XC, righta]:
       i.clear_updaters()
 
     self.play(wholeTriangle.animate.shift(LEFT*2))
-    self.wait()
+    self.wait(d)
 
     AB = Line(DOWN+LEFT, UP+LEFT, color = YELLOW)
     BC = Line(4*LEFT+DOWN, UP+LEFT, color = YELLOW)
@@ -181,14 +190,18 @@ class Trig(Scene):
     self.play(FadeIn(AB))
     self.play(FadeOut(AB))
 
-    self.wait()
+    self.wait(d)
 
     self.play(FadeIn(BC))
     self.play(FadeOut(BC))
     
-    self.wait()
+    self.wait(d)
 
     self.play(FadeIn(AC))
     self.play(FadeOut(AC))
 
-    self.wait()
+    self.wait(d)
+
+    AB_BC = Tex(r"$\frac{AB}{BC}$")
+
+    self.play(AB_BC.animate.shift(2*RIGHT+2*UP)) #, FadeIn(AB_BC)) # make both happen at the same time
