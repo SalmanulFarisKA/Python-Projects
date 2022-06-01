@@ -40,11 +40,7 @@ class Trig(Scene):
 
     ## sides
 
-    sideA = Tex(r"5").next_to(t, (0.5)*(RIGHT+2*LEFT+UP+DOWN) * (adj2)).scale(sc2)
-
-    sideA.add_updater(
-        lambda mob: mob.next_to(t, LEFT*0.1+UP*0.1 * (adj2))
-    )
+    sideA = Tex(r"5").shift(0.5*LEFT+0.3*UP).scale(sc2)
 
     sideB = Tex(r"4").next_to(t, DOWN * (adj2)).scale(sc2)
 
@@ -128,6 +124,8 @@ class Trig(Scene):
 
     # triangle updater
 
+    # triangle = VGroup(t, righta)
+
     t.add_updater(
         lambda mob: mob.become(Polygon(RIGHT + DOWN, RIGHT + UP, LEFT*2 + DOWN).scale(a.get_value()))
     )
@@ -138,12 +136,13 @@ class Trig(Scene):
     self.play(Write(A), Write(B), Write(C))
     self.play(Write(sideA), Write(sideB), Write(sideC), lag_ratio = 0.4)
     self.wait()
+    self.play(sideA.animate.shift(0.5*LEFT+0.2*UP), sideB.animate.shift(0.2*LEFT))
     self.play(Write(XA), Write(aA), Write(XB), Write(aB), Write(XC), Write(aC))
-    self.play(a.animate.set_value(1.5), lag_ratio = 0.3)
+    self.play(a.animate.set_value(1.5), righta.animate.shift(((1.5)*RIGHT+DOWN)*(0.5)))
     self.wait(0.5)
-    self.play(a.animate.set_value(3))
+    self.play(a.animate.set_value(3), righta.animate.shift(((1.5)*RIGHT+DOWN)*(1.5)))
     self.wait(0.5)
-    self.play(a.animate.set_value(0.7))
+    self.play(a.animate.set_value(0.7), righta.animate.shift(((1.5)*RIGHT+DOWN)*(-2.3)))
     self.wait(0.5)
-    self.play(a.animate.set_value(1))
+    self.play(a.animate.set_value(1), righta.animate.shift(((1.5)*RIGHT+DOWN)*(0.3)))
     self.wait()
