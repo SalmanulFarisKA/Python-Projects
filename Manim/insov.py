@@ -1,13 +1,17 @@
+# python -m manim insov.py Equations -pql
+
 from sympy import *
 from manim import *
-import numpy as np
 
-# Take a function as an input and then make a manim program to write that function and output its indefinite integral.
+# Take a function as an input and then make a manim program to write that function and output its indefinite integral. DONE
+
+# A program with GUI that writes the indefinite integral of a function as per what we type in the textbox and outputs the the video
+# of the result when we click solve button
 
 init_printing(use_unicode=False, wrap_line=False)
 x = Symbol('x')
 
-integrand = 2**x
+integrand = cos(x)*x**2
 
 definite = True
 
@@ -34,9 +38,6 @@ if not definite:
 
 else:
 
-    # A program with GUI that writes the indefinite integral of a function as per what we type in the textbox and outputs the the video
-    # of the result when we click solve button
-
     uppBound = 10
     lowBound = 0
 
@@ -57,13 +58,18 @@ else:
 
         def construct(self):
 
-            eq = Tex(f"$\int_{{lowBound}}^{{uppBound}} {integrandLatex}~dx$").shift(
-                2*UP)
-            solEq = Tex(f"$={solLatex} \\right|_{{lowBound}}^{{uppBound}}$").next_to(
-                eq, DOWN)
+            eqText = "$\int_{"+str(lowBound)+"}^{" + str(uppBound) + \
+                "} " + str(integrandLatex) + "~dx$"
+            eq = Tex(eqText).shift(2*UP)
+
+            solEqText = ((f"$={str(solLatex)}" + r"\right|_{" +
+                         str(lowBound)) + "}^{") + str(uppBound) + "}$"
+
+            solEq = Tex(solEqText).next_to(eq, DOWN)
 
             subEq = Tex(
                 f"$=\left({uppSolLatex}\\right) - \left({lowSolLatex}\\right)$").next_to(solEq, DOWN)
+
             finEq = Tex(f"$={finSolLatex}$").next_to(subEq, DOWN)
 
             self.wait()
