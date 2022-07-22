@@ -1,3 +1,6 @@
+# Integral solver that takes input, uses sympy to evaluate it and displays it with manim animation engine
+
+# command:
 # python -m manim insov.py Equations -pql
 
 from sympy import *
