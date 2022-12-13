@@ -1,3 +1,5 @@
+# To simulate a quantum wave packet under a general potential
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
