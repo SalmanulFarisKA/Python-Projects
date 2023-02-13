@@ -1,0 +1,1 @@
+A simple script that generates a chess game using ASCII symbols in the console. Some necessary functions like the ones to detect checkmate and thus end the game, detecting check and being able to castle are missing and will be added in the future.
