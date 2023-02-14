@@ -31,7 +31,7 @@ def draw_board(board):
                            if square.color else square.symbol().lower())
         chess_board.append(row)
 
-    print("    A   B   C   D   E   F   G   H")  # flip column labels
+    print("    A   B   C   D   E   F   G   H")
     print("  ╔═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╗")
     for i, row in enumerate(chess_board):
         print(f"{8-i} ║ {chess_pieces.get(row[7], ' ')} │ {chess_pieces.get(row[6], ' ')} │ {chess_pieces.get(row[5], ' ')} │ {chess_pieces.get(row[4], ' ')} │ {chess_pieces.get(row[3], ' ')} │ {chess_pieces.get(row[2], ' ')} │ {chess_pieces.get(row[1], ' ')} │ {chess_pieces.get(row[0], ' ')} ║")  # flip row contents
