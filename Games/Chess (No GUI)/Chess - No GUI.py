@@ -60,7 +60,7 @@ def play_game():
                 legal_moves = list(board.legal_moves)
                 # AI chooses a random legal move
                 move = random.choice(legal_moves)
-                time.sleep(0.5)
+                time.sleep(1)
                 print(f"AI chose move {move}")
                 board.push(move)
             draw_board(board)
