@@ -4,5 +4,5 @@ Inputs can be entered via [Algebraic notation](https://en.wikipedia.org/wiki/Alg
 The opponent is a simple AI that chooses a random valid move in each turn. More advanced AIs and the option to choose difficulty will be added in the future.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SalmanulFarisKA/Python-Projects/main/Games/Chess%20(No%20GUI)/Chess%20No%20GUI.png" alt="Chess No GUI Demo 1" width="300">
+  <img src="https://raw.githubusercontent.com/SalmanulFarisKA/Python-Projects/main/Games/Chess%20(No%20GUI)/Chess%20No%20GUI%20demo%20image.png" alt="Chess No GUI Demo 1" width="300">
 </p>
