@@ -1,2 +1,2 @@
-A simple script that generates a chess game using ASCII symbols in the console. Some necessary functions like the ones to detect checkmate and thus end the game, detecting check and being able to castle and promote are missing and will be added in the future.
+A simple script that generates a chess game using ASCII symbols in the console. Inputs can be entered via [Algebraic notation](https://en.wikipedia.org/wiki/Algebraic_notation_(chess)) or by specifying starting and ending points (eg: "e2e4").
 ![Demo image](https://raw.githubusercontent.com/SalmanulFarisKA/Python-Projects/main/Games/Chess%20(No%20GUI)/Chess%20No%20GUI.png)
