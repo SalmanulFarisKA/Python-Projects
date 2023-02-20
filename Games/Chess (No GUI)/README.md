@@ -1,6 +1,6 @@
 # Chess
 
-A simple script that generates a chess game using ASCII symbols in the console. It built using the `python-chess` library. 
+A simple script that generates a chess game using Unicode symbols in the console. It built using the `python-chess` library. 
 
 Inputs can be entered via [Algebraic notation](https://en.wikipedia.org/wiki/Algebraic_notation_(chess)) or by specifying starting and ending points (eg: "e2e4").
 The opponent is a simple AI that chooses a random valid move in each turn. More advanced AIs and the option to choose difficulty will be added in the future.
