@@ -14,12 +14,6 @@ The opponent is a simple AI that chooses a random valid move in each turn. More 
 - Python 3.x
 - python-chess library (`pip install python-chess`)
 
-## Usage
-
-1. Clone the repository
-2. Install the requirements using `pip install -r requirements.txt`
-3. Run the game using `python chess_game.py`
-
 ## Game Rules
 
 The game follows standard chess rules. The player with the white pieces moves first. The game ends when one player checkmates the other, or when the game ends in a stalemate or draw.
